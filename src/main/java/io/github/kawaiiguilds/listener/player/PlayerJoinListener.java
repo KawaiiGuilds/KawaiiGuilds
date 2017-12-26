@@ -1,4 +1,4 @@
-package io.github.kawaiiguilds.listener;
+package io.github.kawaiiguilds.listener.player;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
