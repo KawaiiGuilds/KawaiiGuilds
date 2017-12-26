@@ -13,7 +13,15 @@ public class Config {
     @Ignore
     private static Configuration configuration;
 
+    //zapis flat/mysql
+    public static String GUILDSTORE = "flat";
+    public static String USERSTORE = "flat";
 
+    public static String MYSQL$HOST = "localhost";
+    public static int MYSQL$PORT = 3306;
+    public static String MYSQL$DATABASE = "database";
+    public static String MYSQL$USER = "root";
+    public static String MYSQL$PASSWORD = "pass";
 
     public static void init(File file) {
         configuration = new Configuration(file, Config.class);
