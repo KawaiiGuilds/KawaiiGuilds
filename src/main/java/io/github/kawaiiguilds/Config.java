@@ -19,7 +19,7 @@ public class Config {
 
     public static String MYSQL$HOST = "localhost";
     public static int MYSQL$PORT = 3306;
-    public static String MYSQL$DATABASE = "database";
+    public static String MYSQL$DATABASE = "storage";
     public static String MYSQL$USER = "root";
     public static String MYSQL$PASSWORD = "pass";
 
