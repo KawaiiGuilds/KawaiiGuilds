@@ -4,6 +4,22 @@ import java.util.UUID;
 
 public class User {
 
-    private UUID uuid;
+    private final UUID uuid;
     private String name;
+
+    public User(UUID uuid){
+        this.uuid = uuid;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
