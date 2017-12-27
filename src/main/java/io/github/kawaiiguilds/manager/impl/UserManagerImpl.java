@@ -1,5 +1,6 @@
 package io.github.kawaiiguilds.manager.impl;
 
+import io.github.kawaiiguilds.data.MessageType;
 import io.github.kawaiiguilds.data.User;
 import io.github.kawaiiguilds.data.impl.UserImpl;
 import io.github.kawaiiguilds.manager.UserManager;
@@ -12,9 +13,9 @@ public class UserManagerImpl implements UserManager{
 
     private final Map<UUID, User> onlineUsers = new HashMap<>();
 
-    public void createUser(UUID uuid, String name) {
+    public void createUser(UUID uuid, String name, MessageType messageType) {
         if (!onlineUsers.containsKey(uuid)) {
-            onlineUsers.put(uuid, new UserImpl(uuid, name));
+            onlineUsers.put(uuid, new UserImpl(uuid, name, messageType));
         }
         getUser(uuid);
     }
