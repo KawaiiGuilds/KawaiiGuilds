@@ -1,11 +1,14 @@
 package io.github.kawaiiguilds.manager;
 
-import io.github.kawaiiguilds.data.MessageType;
+import io.github.kawaiiguilds.data.enums.MessageType;
 import io.github.kawaiiguilds.data.User;
 
+import java.util.Map;
 import java.util.UUID;
 
 public interface UserManager {
+
+    Map<UUID, User> getOnlineUsers();
 
     User getUser(UUID uuid);
 

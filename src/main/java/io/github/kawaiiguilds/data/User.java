@@ -1,5 +1,6 @@
 package io.github.kawaiiguilds.data;
 
+import io.github.kawaiiguilds.data.enums.MessageType;
 import org.bukkit.entity.Player;
 
 import java.util.Optional;
