@@ -5,9 +5,9 @@ import io.github.kawaiiguilds.configuration.Ignore;
 
 import java.io.File;
 
-public class Config{
+public class Config {
 
-    private Config(){
+    private Config() {
     }
 
     @Ignore
@@ -22,6 +22,11 @@ public class Config{
     public static String MYSQL$DATABASE = "database";
     public static String MYSQL$USER = "root";
     public static String MYSQL$PASSWORD = "pass";
+
+    public static int TAGLENGTH = 4;
+
+    public static int NAME_MAXLENGTH = 16;
+    public static int NAME_MINLENGTH = 4;
 
     public static void init(File file) {
         configuration = new Configuration(file, Config.class);

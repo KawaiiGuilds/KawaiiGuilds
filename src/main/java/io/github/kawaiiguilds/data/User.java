@@ -1,31 +1,18 @@
 package io.github.kawaiiguilds.data;
 
+
+import org.bukkit.entity.Player;
+
+import java.util.Optional;
 import java.util.UUID;
 
-public class User {
+public interface User {
 
-    private final UUID uuid;
-    private String name;
-    private Guild guild;
+    UUID getUUID();
 
-    public User(UUID uuid, String name) {
-        this.uuid = uuid;
-        this.name = name;
-    }
+    String getName();
 
-    public UUID getUuid() {
-        return uuid;
-    }
+    Optional<Player> getPlayer();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Guild getGuild() {
-        return guild;
-    }
+    Optional<Guild> getGuild();
 }

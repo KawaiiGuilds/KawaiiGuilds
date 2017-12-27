@@ -10,16 +10,24 @@ import java.util.List;
 
 public class Messages {
 
-    private Messages(){
+    private Messages() {
     }
 
     @Ignore
     private static Configuration configuration;
 
     public static String NOPERMISSION = "&cNie masz permisji mordo ;/";
-    public static String HASGUILD = "&cMasz juz gildie ;/";
-    public static String TAGEXISTS = "&cGildia o tym tagu juz istnieje";
-    public static String NAMEEXISTS = "&cGildia o tym nicku juz istnieje";
+
+    public static String ERROR$NO_PLAYER = "&cNie znaleziono gracza &7{PLAYER}";
+    public static String ERROR$HAS_GUILD = "&cMasz juz gildie";
+    public static String ERROR$TAG_EXISTS = "&cGildia o tagu &7{TAG} &cjuz istnieje";
+    public static String ERROR$TAG_LENGTH = "&cTag musi miec 4 litery";
+    public static String ERROR$NAME_EXISTS = "&cGildia o nazwie {NAME} juz istnieje";
+    public static String ERROR$NAME_MAX_LENGTH = "&cNazwa nie moze byc dluzsza niz {MAXLENGTH} liter";
+    public static String ERROR$NAME_MIN_LENGTH = "&cNazwa nie moze byc krotsza niz {MINLENGTH} litery";
+    public static String ERROR$NAME = "&cNazwa moze zawierac tylko litery";
+    public static String ERROR$TAG= "&cTag moze zawierac tylko litery";
+
     public static List<String> COMMANDLIST = Arrays.asList(
             "&7<&f-&8[&6KAWAIIGUILDS&8]&f-&8>",
             "&a/g &7zaloz &6<tag> <nazwa>",

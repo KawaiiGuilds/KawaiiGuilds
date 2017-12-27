@@ -1,36 +1,11 @@
 package io.github.kawaiiguilds.data;
 
-import org.bukkit.World;
+public interface Cuboid {
 
-public class Cuboid {
+    int getCenterX();
 
-    private Guild guild;
-    private World world;
-    private int centerX;
-    private int centerZ;
-    private int size;
+    int getCenterZ();
 
-    public Guild getGuild() {
-        return guild;
-    }
+    int getSize();
 
-    public World getWorld() {
-        return world;
-    }
-
-    public int getCenterX() {
-        return centerX;
-    }
-
-    public int getCenterZ() {
-        return centerZ;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
 }

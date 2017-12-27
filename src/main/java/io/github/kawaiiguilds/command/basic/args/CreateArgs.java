@@ -1,5 +1,6 @@
 package io.github.kawaiiguilds.command.basic.args;
 
+import io.github.kawaiiguilds.Config;
 import io.github.kawaiiguilds.KawaiiGuilds;
 import io.github.kawaiiguilds.Messages;
 import io.github.kawaiiguilds.command.executorbase.SubCommand;
@@ -26,24 +27,50 @@ public class CreateArgs extends SubCommand {
     @Override
     public void runCommand(CommandSender sender, Command baseCommand, String baseCommandLabel, String subCommandLabel, String[] args) {
         Player player = (Player) sender;
-        User user = UserManager.getUser(player.getUniqueId());
-        Guild guild = user.getGuild();
+        User user = kawaiiGuilds.getUserManager().getUser(player.getUniqueId());
+        GuildManager guildManager = kawaiiGuilds.getGuildManager();
 
-        if(guild != null) {
-            player.sendMessage(Messages.HASGUILD);
+        if(user.getGuild() != null) {
+            player.sendMessage(Messages.ERROR$HAS_GUILD);
             return;
         }
         String name = args[0];
         String tag = args[1].toUpperCase();
 
-        if(GuildManager.tagExists(tag)) {
-            player.sendMessage(Messages.TAGEXISTS);
+        if(guildManager.tagExists(tag)) {
+            player.sendMessage(Messages.ERROR$TAG_EXISTS.replace("{TAG}", tag));
             return;
         }
-        if(GuildManager.nameExists(name)) {
-            player.sendMessage(Messages.NAMEEXISTS);
+
+        if(guildManager.nameExists(name)) {
+            player.sendMessage(Messages.ERROR$NAME_EXISTS.replace("{NAME}", name));
             return;
         }
+
+        if(tag.length() != Config.TAGLENGTH) {
+            player.sendMessage(Messages.ERROR$TAG_LENGTH);
+            return;
+        }
+
+        if(name.length() > Config.NAME_MINLENGTH) {
+            player.sendMessage(Messages.ERROR$NAME_MAX_LENGTH.replace("{MAXLENGTH}", Integer.toString(Config.NAME_MAXLENGTH)));
+            return;
+        }
+        if(name.length() > Config.NAME_MAXLENGTH) {
+            player.sendMessage(Messages.ERROR$NAME_MIN_LENGTH.replace("{MINLENGTH}", Integer.toString(Config.NAME_MINLENGTH)));
+            return;
+        }
+
+        if (!tag.matches("[a-zA-Z]+")) {
+            player.sendMessage(Messages.ERROR$TAG);
+            return;
+        }
+
+        if (!name.matches("[a-zA-Z]+")) {
+            player.sendMessage(Messages.ERROR$NAME);
+            return;
+        }
+
 
     }
 }

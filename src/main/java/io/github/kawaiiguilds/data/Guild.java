@@ -1,37 +1,11 @@
 package io.github.kawaiiguilds.data;
 
-import java.util.ArrayList;
-import java.util.List;
+public interface Guild {
 
-public class Guild {
+    String getTag();
+    void setTag(String tag);
 
-    private String tag;
-    private String name;
-    private User owner;
+    String getName();
+    void setName(String name);
 
-    private final List<User> members = new ArrayList<>();
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
 }
