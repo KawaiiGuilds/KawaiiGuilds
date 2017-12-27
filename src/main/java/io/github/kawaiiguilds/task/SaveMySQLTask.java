@@ -6,7 +6,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.SQLException;
 
-public class SaveMySQLTask extends BukkitRunnable {
+public class SaveMySQLTask implements Runnable {
 
     private KawaiiGuilds kawaiiGuilds;
 

@@ -10,6 +10,9 @@ import io.github.kawaiiguilds.manager.impl.GuildManagerImpl;
 import io.github.kawaiiguilds.manager.impl.UserManagerImpl;
 import io.github.kawaiiguilds.storage.database.Database;
 import io.github.kawaiiguilds.storage.database.mysql.MySQL;
+import io.github.kawaiiguilds.task.LoadMySQLTask;
+import io.github.kawaiiguilds.task.SaveMySQLTask;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,11 +30,16 @@ public final class KawaiiGuilds extends JavaPlugin {
     public void onEnable() {
         Messages.init(new File(this.getDataFolder(), "messages.yml"));
         Config.init(new File(this.getDataFolder(), "config.yml"));
+
         CommandExecutorBase cmdBase = new CommandExecutorBase("kawaiiguilds.command.basic");
         cmdBase.addSubCommand(new CreateArgs(this));
         this.getCommand("kawaiiguilds").setExecutor(cmdBase);
+
         registerListeners(new PlayerJoinListener(this), new AsyncPlayerChatListener());
+
         this.mySQL = new MySQL(this);
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new LoadMySQLTask(this), 100L, 100L);
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new SaveMySQLTask(this), 100L, 100L);
     }
 
     @Override
