@@ -7,13 +7,12 @@ import io.github.kawaiiguilds.listener.player.PlayerJoinListener;
 
 import java.io.File;
 
-public final class KawaiiGuilds extends JavaPlugin{
+public final class KawaiiGuilds extends JavaPlugin {
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         Messages.init(new File(this.getDataFolder(), "messages.yml"));
         Config.init(new File(this.getDataFolder(), "config.yml"));
-
 
         this.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
 

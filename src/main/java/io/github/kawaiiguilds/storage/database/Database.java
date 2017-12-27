@@ -1,6 +1,6 @@
 package io.github.kawaiiguilds.storage.database;
 
-public interface Database{
+public interface Database {
 
     void connect();
 

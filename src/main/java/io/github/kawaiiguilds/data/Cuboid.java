@@ -2,7 +2,7 @@ package io.github.kawaiiguilds.data;
 
 import org.bukkit.World;
 
-public class Cuboid{
+public class Cuboid {
 
     private Guild guild;
     private World world;
@@ -10,27 +10,27 @@ public class Cuboid{
     private int centerZ;
     private int size;
 
-    public Guild getGuild(){
+    public Guild getGuild() {
         return guild;
     }
 
-    public World getWorld(){
+    public World getWorld() {
         return world;
     }
 
-    public int getCenterX(){
+    public int getCenterX() {
         return centerX;
     }
 
-    public int getCenterZ(){
+    public int getCenterZ() {
         return centerZ;
     }
 
-    public int getSize(){
+    public int getSize() {
         return size;
     }
 
-    public void setSize(int size){
+    public void setSize(int size) {
         this.size = size;
     }
 }

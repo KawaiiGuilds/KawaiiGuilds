@@ -6,10 +6,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-public class PlayerJoinListener implements Listener{
+public class PlayerJoinListener implements Listener {
 
     @EventHandler
-    public void onPlayerJoinEvent(final PlayerJoinEvent event){
+    public void onPlayerJoinEvent(final PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
         UserManager.createUser(player.getUniqueId(), player.getName());

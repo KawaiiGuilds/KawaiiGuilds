@@ -1,7 +1,6 @@
 package io.github.kawaiiguilds.storage;
 
-public enum StorageType{
-
+public enum StorageType {
     MYSQL,
     SQLITE
 }

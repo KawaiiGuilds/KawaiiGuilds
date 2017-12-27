@@ -1,6 +1,6 @@
 package io.github.kawaiiguilds.storage;
 
-public interface Storage{
+public interface Storage {
 
     void loadAll();
 

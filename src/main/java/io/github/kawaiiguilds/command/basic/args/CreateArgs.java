@@ -11,7 +11,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CreateArgs extends SubCommand{
+public class CreateArgs extends SubCommand {
 
     private final KawaiiGuilds kawaiiGuilds;
 
@@ -24,23 +24,23 @@ public class CreateArgs extends SubCommand{
     }
 
     @Override
-    public void runCommand(CommandSender sender, Command baseCommand, String baseCommandLabel, String subCommandLabel, String[] args){
+    public void runCommand(CommandSender sender, Command baseCommand, String baseCommandLabel, String subCommandLabel, String[] args) {
         Player player = (Player) sender;
         User user = UserManager.getUser(player.getUniqueId());
         Guild guild = user.getGuild();
 
-        if(guild != null){
+        if(guild != null) {
             player.sendMessage(Messages.HASGUILD);
             return;
         }
         String name = args[0];
         String tag = args[1].toUpperCase();
 
-        if(GuildManager.tagExists(tag)){
+        if(GuildManager.tagExists(tag)) {
             player.sendMessage(Messages.TAGEXISTS);
             return;
         }
-        if(GuildManager.nameExists(name)){
+        if(GuildManager.nameExists(name)) {
             player.sendMessage(Messages.NAMEEXISTS);
             return;
         }

@@ -16,11 +16,11 @@
  */
 package io.github.kawaiiguilds.command.executorbase;
 
-public class ArrayHelpers{
+public class ArrayHelpers {
 
     public static final String[] EMPTY_STRING = {};
 
-    public static String[] getSubArray(String[] array, int startPos, int length){
+    public static String[] getSubArray(String[] array, int startPos, int length) {
         if (startPos + length > array.length) {
             throw new ArrayIndexOutOfBoundsException("startPos + length > array.length");
         } else if (startPos < 0) {
@@ -35,7 +35,7 @@ public class ArrayHelpers{
         return copy;
     }
 
-    public static String combinedWithSeperator(Object[] array, String seperator){
+    public static String combinedWithSeperator(Object[] array, String seperator) {
         if (array.length == 0) {
             return "";
         } else if (array.length == 1) {

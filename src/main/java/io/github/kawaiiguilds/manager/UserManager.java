@@ -12,18 +12,18 @@ public class UserManager{
 
     private static final Map<UUID, User> onlineUsers= new HashMap<>();
 
-    public static void createUser(UUID uuid, String name){
+    public static void createUser(UUID uuid, String name) {
         if (!onlineUsers.containsKey(uuid)) {
             onlineUsers.put(uuid, new User(uuid, name));
         }
         getUser(uuid);
     }
 
-    public static User getUser(UUID uuid){
+    public static User getUser(UUID uuid) {
         return onlineUsers.get(uuid);
     }
 
-    public User getUser(String name){
+    public User getUser(String name) {
         return onlineUsers.values().stream()
                 .filter(user -> user.getName().equalsIgnoreCase(name))
                 .map(Optional::ofNullable)

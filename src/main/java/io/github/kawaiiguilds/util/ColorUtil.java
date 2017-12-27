@@ -2,12 +2,12 @@ package io.github.kawaiiguilds.util;
 
 import org.bukkit.ChatColor;
 
-public final class ColorUtil{
+public final class ColorUtil {
 
-    private ColorUtil(){
+    private ColorUtil() {
     }
 
-    public static String fixColor(String row){
+    public static String fixColor(String row) {
         return ChatColor.translateAlternateColorCodes('&', row);
     }
 

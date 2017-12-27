@@ -21,10 +21,10 @@ import io.github.kawaiiguilds.command.executorbase.SubCommand;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class PlayerOnlyCondition implements CommandPreCondition{
+public class PlayerOnlyCondition implements CommandPreCondition {
 
     @Override
-    public boolean canContinue(CommandSender sender, SubCommand subCommand){
+    public boolean canContinue(CommandSender sender, SubCommand subCommand) {
         return sender instanceof Player;
     }
 }

@@ -5,15 +5,15 @@ import io.github.kawaiiguilds.data.Guild;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuildManager{
+public class GuildManager {
 
     private static List<Guild> guildList = new ArrayList<>();
 
-    public static List<Guild> getGuildList(){
+    public static List<Guild> getGuildList() {
         return guildList;
     }
 
-    public static boolean tagExists(String tag){
+    public static boolean tagExists(String tag) {
         for (Guild guild : guildList) {
             if (guild.getTag().equalsIgnoreCase(tag)) {
                 return true;
@@ -22,7 +22,7 @@ public class GuildManager{
         return false;
     }
 
-    public static boolean nameExists(String name){
+    public static boolean nameExists(String name) {
         for (Guild guild : guildList) {
             if (guild.getName().equalsIgnoreCase(name)) {
                 return true;
