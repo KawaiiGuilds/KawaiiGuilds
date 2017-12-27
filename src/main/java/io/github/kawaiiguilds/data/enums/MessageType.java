@@ -1,4 +1,4 @@
-package io.github.kawaiiguilds.data;
+package io.github.kawaiiguilds.data.enums;
 
 public enum MessageType {
 

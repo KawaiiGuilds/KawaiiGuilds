@@ -4,18 +4,32 @@ import io.github.kawaiiguilds.data.Cuboid;
 
 public class CuboidImpl implements Cuboid {
 
+    private int centerX;
+    private int centerZ;
+    private int size;
+
     @Override
     public int getCenterX() {
-        return 0;
+        return this.centerX;
     }
 
     @Override
     public int getCenterZ() {
-        return 0;
+        return this.centerZ;
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return this.size;
+    }
+
+    @Override
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    @Override
+    public boolean isInCuboid(int x, int z) {
+        return false;
     }
 }

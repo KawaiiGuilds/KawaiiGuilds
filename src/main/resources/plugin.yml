@@ -5,5 +5,5 @@ authors: [3NzxHsQ, delete404]
 
 commands:
   kawaiiguilds:
-  usage: /gildie
-  aliases: [kg, guild, gildie]
+    usage: /gildie
+    aliases: [kg, guild, gildie]

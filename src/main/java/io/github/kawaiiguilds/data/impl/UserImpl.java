@@ -1,7 +1,7 @@
 package io.github.kawaiiguilds.data.impl;
 
 import io.github.kawaiiguilds.data.Guild;
-import io.github.kawaiiguilds.data.MessageType;
+import io.github.kawaiiguilds.data.enums.MessageType;
 import io.github.kawaiiguilds.data.User;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
