@@ -8,6 +8,8 @@ import io.github.kawaiiguilds.manager.GuildManager;
 import io.github.kawaiiguilds.manager.UserManager;
 import io.github.kawaiiguilds.manager.impl.GuildManagerImpl;
 import io.github.kawaiiguilds.manager.impl.UserManagerImpl;
+import io.github.kawaiiguilds.task.LoadMySQLTask;
+import io.github.kawaiiguilds.task.SaveMySQLTask;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +29,8 @@ public final class KawaiiGuilds extends JavaPlugin {
         cmdBase.addSubCommand(new CreateArgs(this));
         this.getCommand("kawaiiguilds").setExecutor(cmdBase);
         registerListeners(new PlayerJoinListener(this), new AsyncPlayerChatListener());
+        new LoadMySQLTask(this).runTaskAsynchronously(this);
+        new SaveMySQLTask(this).runTaskAsynchronously(this);
     }
 
     @Override
