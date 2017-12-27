@@ -2,21 +2,17 @@ package io.github.kawaiiguilds.data.impl;
 
 import io.github.kawaiiguilds.data.Cuboid;
 import io.github.kawaiiguilds.data.Guild;
-import org.bukkit.Location;
 
 public class GuildImpl implements Guild {
 
     private String tag;
     private String name;
-    private int limit;
     private Cuboid cuboid;
 
-    public int getLimit() {
-        return limit;
-    }
-
-    public void setLimit(int limit) {
-        this.limit = limit;
+    public GuildImpl(String tag, String name, Cuboid cuboid) {
+        this.tag = tag;
+        this.name = name;
+        this.cuboid = cuboid;
     }
 
     @Override
@@ -41,8 +37,7 @@ public class GuildImpl implements Guild {
 
     @Override
     public Cuboid getCuboid() {
-        //TODO
-        return null;
+        return this.cuboid;
     }
 
 }

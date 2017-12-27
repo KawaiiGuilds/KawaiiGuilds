@@ -10,7 +10,4 @@ public interface Guild {
 
     Cuboid getCuboid();
 
-    int getLimit();
-    void setLimit(int limit);
-
 }

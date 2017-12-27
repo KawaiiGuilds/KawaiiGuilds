@@ -1,6 +1,5 @@
 package io.github.kawaiiguilds.listener;
 
-import io.github.kawaiiguilds.KawaiiGuilds;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
