@@ -1,25 +1,29 @@
 package io.github.kawaiiguilds.event.guild;
 
 import io.github.kawaiiguilds.data.Guild;
-import org.bukkit.Location;
+import io.github.kawaiiguilds.util.effect.EffectType;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Cancellable;
 
-public final class GuildDeleteEvent extends Event implements Cancellable {
+public final class GuildBuyEffectEvent extends Event implements Cancellable {
 
-    private Location guildLocation;
+    private EffectType effectType;
     private Guild guild;
     private boolean cancelled;
     private static final HandlerList handlers = new HandlerList();
 
-    public GuildDeleteEvent(Location guildLocation, Guild guild) {
-        this.guildLocation = guildLocation;
+    public GuildBuyEffectEvent(EffectType effectType, Guild guild) {
+        this.effectType = effectType;
         this.guild = guild;
     }
 
-    public Location getGuildLocation() {
-        return this.guildLocation;
+    public void setEffectType() {
+        this.effectType = effectType;
+    }
+
+    public EffectType getEffectType() {
+        return this.effectType;
     }
 
     public Guild getGuild() {

@@ -1,6 +1,5 @@
 package io.github.kawaiiguilds.data;
 
-
 import org.bukkit.entity.Player;
 
 import java.util.Optional;
@@ -15,4 +14,8 @@ public interface User {
     Optional<Player> getPlayer();
 
     Optional<Guild> getGuild();
+
+    MessageType getMessageType();
+
+    void setMessageType(MessageType messageType);
 }

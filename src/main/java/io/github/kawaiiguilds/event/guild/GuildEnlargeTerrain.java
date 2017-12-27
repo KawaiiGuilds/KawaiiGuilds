@@ -1,25 +1,28 @@
 package io.github.kawaiiguilds.event.guild;
 
 import io.github.kawaiiguilds.data.Guild;
-import org.bukkit.Location;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.Cancellable;
 
-public final class GuildDeleteEvent extends Event implements Cancellable {
+public final class GuildEnlargeTerrain extends Event implements Cancellable {
 
-    private Location guildLocation;
+    private int enlargeLevel; // maximum == 5
     private Guild guild;
     private boolean cancelled;
     private static final HandlerList handlers = new HandlerList();
 
-    public GuildDeleteEvent(Location guildLocation, Guild guild) {
-        this.guildLocation = guildLocation;
+    public GuildEnlargeTerrain(int enlargeLevel, Guild guild) {
+        this.enlargeLevel = enlargeLevel;
         this.guild = guild;
     }
 
-    public Location getGuildLocation() {
-        return this.guildLocation;
+    public void setEnlargeLevel() {
+        this.enlargeLevel = enlargeLevel;
+    }
+
+    public int getEnlargeLevel() {
+        return this.enlargeLevel;
     }
 
     public Guild getGuild() {
