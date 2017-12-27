@@ -30,12 +30,13 @@ public class CreateArgs extends SubCommand {
         User user = kawaiiGuilds.getUserManager().getUser(player.getUniqueId());
         GuildManager guildManager = kawaiiGuilds.getGuildManager();
 
-        if(user.getGuild() != null) {
+        if(user.getGuild() == null) {
             player.sendMessage(Messages.ERROR$HAS_GUILD);
             return;
         }
-        String name = args[0];
-        String tag = args[1].toUpperCase();
+
+        String tag = args[0].toUpperCase();
+        String name = args[1];
 
         if(guildManager.tagExists(tag)) {
             player.sendMessage(Messages.ERROR$TAG_EXISTS.replace("{TAG}", tag));

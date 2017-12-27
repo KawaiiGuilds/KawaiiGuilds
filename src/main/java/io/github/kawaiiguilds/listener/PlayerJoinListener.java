@@ -1,4 +1,4 @@
-package io.github.kawaiiguilds.listener.player;
+package io.github.kawaiiguilds.listener;
 
 import io.github.kawaiiguilds.KawaiiGuilds;
 import io.github.kawaiiguilds.manager.UserManager;

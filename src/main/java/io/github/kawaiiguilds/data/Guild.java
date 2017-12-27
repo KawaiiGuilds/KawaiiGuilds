@@ -8,4 +8,6 @@ public interface Guild {
     String getName();
     void setName(String name);
 
+    Cuboid getCuboid();
+
 }

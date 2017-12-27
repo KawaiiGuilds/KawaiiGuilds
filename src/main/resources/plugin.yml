@@ -4,4 +4,6 @@ version: ${project.version}
 authors: [3NzxHsQ, delete404]
 
 commands:
-  guild:
+  kawaiiguilds:
+  usage: /gildie
+  aliases: [kg, guild, gildie]
