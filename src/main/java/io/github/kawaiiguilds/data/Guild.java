@@ -11,27 +11,27 @@ public class Guild {
 
     private final List<User> members = new ArrayList<>();
 
-    public String getTag() {
+    public String getTag(){
         return tag;
     }
 
-    public void setTag(String tag) {
+    public void setTag(String tag){
         this.tag = tag;
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name){
         this.name = name;
     }
 
-    public User getOwner() {
+    public User getOwner(){
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(User owner){
         this.owner = owner;
     }
 }

@@ -4,28 +4,31 @@ import io.github.kawaiiguilds.data.User;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Function;
 
-public class UserManager {
+public class UserManager{
 
-    private final Map<UUID, User> usersMap = new HashMap<>();
+    private static final Map<UUID, User> usersMap = new HashMap<>();
 
-    public User createUser(UUID uuid, String name){
-        if (!this.usersMap.containsKey(uuid)) {
-            this.usersMap.put(uuid, new User(uuid, name));
+    public static void createUser(UUID uuid, String name){
+        if (!usersMap.containsKey(uuid)) {
+            usersMap.put(uuid, new User(uuid, name));
         }
-        return this.getUser(uuid);
+        getUser(uuid);
     }
 
-    public User getUser(UUID uuid){
-        return this.usersMap.get(uuid);
+    public static User getUser(UUID uuid){
+        return usersMap.get(uuid);
     }
 
     public User getUser(String name){
-        return this.usersMap.values()
-                .stream()
-                .filter(Player -> Player.getName().equalsIgnoreCase(name))
+        return usersMap.values().stream()
+                .filter(user -> user.getName().equalsIgnoreCase(name))
+                .map(Optional::ofNullable)
                 .findFirst()
-                .get();
+                .flatMap(Function.identity())
+                .orElse(null);
     }
 }

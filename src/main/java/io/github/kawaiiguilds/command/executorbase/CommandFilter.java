@@ -19,7 +19,7 @@ package io.github.kawaiiguilds.command.executorbase;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public interface CommandFilter {
+public interface CommandFilter{
 
     boolean canContinue(CommandSender sender, Command baseCommand, SubCommand subCommand, String baseCommandLabel, String subCommandLabel, String[] subCommandArgs);
 

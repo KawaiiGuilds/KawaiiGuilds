@@ -1,5 +1,6 @@
 package io.github.kawaiiguilds.listener.player;
 
+import io.github.kawaiiguilds.manager.UserManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,5 +12,6 @@ public class PlayerJoinListener implements Listener{
     public void onPlayerJoinEvent(final PlayerJoinEvent event){
         Player player = event.getPlayer();
 
+        UserManager.createUser(player.getUniqueId(), player.getName());
     }
 }

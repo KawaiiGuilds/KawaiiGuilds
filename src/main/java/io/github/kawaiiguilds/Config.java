@@ -5,7 +5,7 @@ import io.github.kawaiiguilds.configuration.Ignore;
 
 import java.io.File;
 
-public class Config {
+public class Config{
 
     private Config(){
     }

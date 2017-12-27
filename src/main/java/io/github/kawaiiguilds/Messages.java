@@ -3,6 +3,7 @@ package io.github.kawaiiguilds;
 import io.github.kawaiiguilds.configuration.Configuration;
 import io.github.kawaiiguilds.configuration.Ignore;
 
+import java.awt.*;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -15,8 +16,10 @@ public class Messages{
     @Ignore
     private static Configuration configuration;
 
-    public static String PLAYERONLY = "&cYou must be player to run this command.";
     public static String NOPERMISSION = "&cNie masz permisji mordo ;/";
+    public static String HASGUILD = "&cMasz juz gildie ;/";
+    public static String TAGEXISTS = "&cGildia o tym tagu juz istnieje";
+    public static String NAMEEXISTS = "&cGildia o tym nicku juz istnieje";
     public static List<String> COMMANDLIST = Arrays.asList(
             "&7<&f-&8[&6KAWAIIGUILDS&8]&f-&8>",
             "&a/g &7zaloz &6<tag> <nazwa>",

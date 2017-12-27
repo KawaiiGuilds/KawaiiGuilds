@@ -26,6 +26,7 @@ import io.github.kawaiiguilds.command.executorbase.conditions.PermissionConditio
 import io.github.kawaiiguilds.command.executorbase.conditions.PlayerOnlyCondition;
 import io.github.kawaiiguilds.command.executorbase.filters.PermissionFilter;
 import io.github.kawaiiguilds.command.executorbase.filters.PlayerOnlyFilter;
+import io.github.kawaiiguilds.util.ColorUtil;
 import org.apache.commons.lang.Validate;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -42,7 +43,7 @@ public abstract class SubCommand {
     public SubCommand(String commandName, boolean canConsoleExecute, String permission, String helpMessage) {
         Validate.notNull(commandName);
         this.commandName = commandName.toLowerCase(Locale.ENGLISH);
-        this.help = (helpMessage == null ? "" : helpMessage);
+        this.help = (helpMessage == null ? "" : ColorUtil.fixColor(helpMessage));
         this.permission = permission;
         this.argumentNames = new ArrayList<>();
         this.commandFilters = new ArrayList<>();
@@ -79,11 +80,11 @@ public abstract class SubCommand {
         return this;
     }
 
-    public String getName() {
+    String getName() {
         return commandName;
     }
 
-    public String getHelpMessage() {
+    String getHelpMessage() {
         return help;
     }
 
@@ -91,15 +92,15 @@ public abstract class SubCommand {
         return permission;
     }
 
-    public List<String> getArgumentNames() {
+    List<String> getArgumentNames() {
         return Collections.unmodifiableList(argumentNames);
     }
 
-    public List<CommandFilter> getCommandFilters() {
+    List<CommandFilter> getCommandFilters() {
         return Collections.unmodifiableList(commandFilters);
     }
 
-    public List<CommandPreCondition> getHelpConditions() {
+    List<CommandPreCondition> getHelpConditions() {
         return Collections.unmodifiableList(helpConditions);
     }
 

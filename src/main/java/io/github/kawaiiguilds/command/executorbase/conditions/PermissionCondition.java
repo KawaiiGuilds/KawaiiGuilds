@@ -21,10 +21,10 @@ import io.github.kawaiiguilds.command.executorbase.SubCommand;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 
-public class PermissionCondition implements CommandPreCondition {
+public class PermissionCondition implements CommandPreCondition{
 
     @Override
-    public boolean canContinue(CommandSender sender, SubCommand subCommand) {
+    public boolean canContinue(CommandSender sender, SubCommand subCommand){
         String permission = subCommand.getPermission();
         return permission == null || sender instanceof ConsoleCommandSender || sender.hasPermission(permission);
     }

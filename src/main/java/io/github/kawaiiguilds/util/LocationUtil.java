@@ -1,6 +1,6 @@
 package io.github.kawaiiguilds.util;
 
-public class LocationUtil {
+public class LocationUtil{
 
     private LocationUtil(){
     }

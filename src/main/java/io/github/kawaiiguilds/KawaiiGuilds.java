@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public final class KawaiiGuilds extends JavaPlugin{
 
     @Override
-    public void onEnable() {
+    public void onEnable(){
         Messages.init(new File(this.getDataFolder(), "messages.yml"));
         Config.init(new File(this.getDataFolder(), "config.yml"));
 
@@ -23,7 +23,7 @@ public final class KawaiiGuilds extends JavaPlugin{
 
         CommandExecutorBase cmdBase = new CommandExecutorBase("kawaiiguilds.command.basic");
         cmdBase.addSubCommand(new CreateArgs(this));
-        getCommand("guild").setExecutor(cmdBase);
+        this.getCommand("guild").setExecutor(cmdBase);
     }
 
     @Override

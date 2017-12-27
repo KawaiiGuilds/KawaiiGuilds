@@ -8,7 +8,7 @@ public class GuildDeleteEvent extends Event{
     private static final HandlerList handlerList = new HandlerList();
 
     @Override
-    public HandlerList getHandlers() {
+    public HandlerList getHandlers(){
         return handlerList;
     }
 }

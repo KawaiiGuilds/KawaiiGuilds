@@ -4,7 +4,7 @@ import org.bukkit.command.CommandSender;
 
 import java.util.List;
 
-public class MessageUtil {
+public class MessageUtil{
 
     private MessageUtil(){
     }

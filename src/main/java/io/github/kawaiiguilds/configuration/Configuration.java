@@ -13,13 +13,13 @@ public class Configuration{
     private File file;
     private Class<?> clazz;
 
-    public Configuration(File file, Class<?> clazz) {
+    public Configuration(File file, Class<?> clazz){
         this.file = file;
         this.clazz = clazz;
         this.reloadConfig();
     }
 
-    private void parse(Class<?> clazz, YamlConfiguration config) {
+    private void parse(Class<?> clazz, YamlConfiguration config){
         try {
             for (Field f : clazz.getFields()) {
                 if (Modifier.isStatic(f.getModifiers()) && Modifier.isPublic(f.getModifiers())) {
@@ -41,7 +41,7 @@ public class Configuration{
         }
     }
 
-    private void parseSave(Class<?> clazz, YamlConfiguration config) {
+    private void parseSave(Class<?> clazz, YamlConfiguration config){
         try {
             for (Field f : clazz.getFields()) {
                 if (Modifier.isStatic(f.getModifiers()) && Modifier.isPublic(f.getModifiers())) {
@@ -58,7 +58,7 @@ public class Configuration{
         }
     }
 
-    private File checkFile() {
+    private File checkFile(){
         File configFile = this.file;
         if (!configFile.exists()) {
             configFile.getParentFile().mkdirs();
@@ -73,7 +73,7 @@ public class Configuration{
         return configFile;
     }
 
-    public synchronized void reloadConfig() {
+    public synchronized void reloadConfig(){
         File configFile = this.checkFile();
         try {
             YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
@@ -85,7 +85,7 @@ public class Configuration{
         }
     }
 
-    public synchronized void saveConfig() {
+    public synchronized void saveConfig(){
         File configFile = this.checkFile();
         try {
             YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
