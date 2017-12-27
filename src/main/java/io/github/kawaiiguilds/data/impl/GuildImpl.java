@@ -1,5 +1,6 @@
 package io.github.kawaiiguilds.data.impl;
 
+import io.github.kawaiiguilds.data.Cuboid;
 import io.github.kawaiiguilds.data.Guild;
 
 public class GuildImpl implements Guild {
@@ -25,6 +26,12 @@ public class GuildImpl implements Guild {
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public Cuboid getCuboid() {
+        //TODO
+        return null;
     }
 
 }

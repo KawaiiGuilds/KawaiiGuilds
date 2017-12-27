@@ -10,7 +10,7 @@ import io.github.kawaiiguilds.manager.impl.UserManagerImpl;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import io.github.kawaiiguilds.listener.player.PlayerJoinListener;
+import io.github.kawaiiguilds.listener.PlayerJoinListener;
 
 import java.io.File;
 
@@ -28,7 +28,7 @@ public final class KawaiiGuilds extends JavaPlugin {
 
         CommandExecutorBase cmdBase = new CommandExecutorBase("kawaiiguilds.command.basic");
         cmdBase.addSubCommand(new CreateArgs(this));
-        this.getCommand("guild").setExecutor(cmdBase);
+        this.getCommand("kawaiiguilds").setExecutor(cmdBase);
     }
 
     @Override

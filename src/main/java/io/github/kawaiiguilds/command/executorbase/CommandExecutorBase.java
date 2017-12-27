@@ -126,7 +126,7 @@ public class CommandExecutorBase implements TabExecutor{
         resultBuilder.append(baseCommandLabel).append(subCommand.getName());
         if (!subCommand.getArgumentNames().isEmpty()) {
             for (String argument : subCommand.getArgumentNames()) {
-                resultBuilder.append("argumenty").append(argument);
+                resultBuilder.append(argument);
             }
         }
         resultBuilder.append(subCommand.getHelpMessage());
