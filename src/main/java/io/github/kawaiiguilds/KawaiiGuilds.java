@@ -1,5 +1,7 @@
 package io.github.kawaiiguilds;
 
+import io.github.kawaiiguilds.command.basic.args.CreateArgs;
+import io.github.kawaiiguilds.command.executorbase.CommandExecutorBase;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import io.github.kawaiiguilds.listener.player.AsyncPlayerChatListener;
@@ -11,18 +13,22 @@ import java.util.stream.Stream;
 public final class KawaiiGuilds extends JavaPlugin{
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         Messages.init(new File(this.getDataFolder(), "messages.yml"));
         Config.init(new File(this.getDataFolder(), "config.yml"));
-         Stream.of(
+
+        Stream.of(
                 new PlayerJoinListener(), new AsyncPlayerChatListener()
         ).forEach(l -> Bukkit.getPluginManager().registerEvents(l, this));
+
+        CommandExecutorBase cmdBase = new CommandExecutorBase("kawaiiguilds.command.basic");
+        cmdBase.addSubCommand(new CreateArgs(this));
+        getCommand("guild").setExecutor(cmdBase);
     }
 
     @Override
     public void onDisable(){
 
     }
-
 
 }

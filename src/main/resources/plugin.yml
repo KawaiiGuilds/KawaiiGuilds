@@ -2,3 +2,6 @@ name: KawaiiGuilds
 main: io.github.kawaiiguilds.KawaiiGuilds
 version: ${project.version}
 authors: [3NzxHsQ, delete404]
+
+commands:
+  guild:

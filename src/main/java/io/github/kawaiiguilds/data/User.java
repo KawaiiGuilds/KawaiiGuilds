@@ -7,8 +7,9 @@ public class User {
     private final UUID uuid;
     private String name;
 
-    public User(UUID uuid){
+    public User(UUID uuid, String name){
         this.uuid = uuid;
+        this.name = name;
     }
 
     public UUID getUuid() {

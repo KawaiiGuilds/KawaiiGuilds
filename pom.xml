@@ -6,14 +6,14 @@
 
     <groupId>io.github</groupId>
     <artifactId>kawaiiguilds</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <name>KawaiiGuilds</name>
 
     <repositories>
-    <repository>
+        <repository>
         <id>spigotmc-repo</id>
         <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
-    </repository>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -21,6 +21,12 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.12.2-R0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>craftbukkit</artifactId>
+            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
