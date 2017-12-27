@@ -19,7 +19,7 @@ public final class KawaiiGuilds extends JavaPlugin{
 
         Stream.of(
                 new PlayerJoinListener(), new AsyncPlayerChatListener()
-        ).forEach(l -> Bukkit.getPluginManager().registerEvents(l, this));
+        ).forEach(l -> this.getServer().getPluginManager().registerEvents(l, this));
 
         CommandExecutorBase cmdBase = new CommandExecutorBase("kawaiiguilds.command.basic");
         cmdBase.addSubCommand(new CreateArgs(this));
