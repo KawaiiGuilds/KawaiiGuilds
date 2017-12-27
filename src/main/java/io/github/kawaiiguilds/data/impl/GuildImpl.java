@@ -7,6 +7,13 @@ public class GuildImpl implements Guild {
 
     private String tag;
     private String name;
+    private Cuboid cuboid;
+
+    public GuildImpl(String tag, String name, Cuboid cuboid) {
+        this.tag = tag;
+        this.name = name;
+        this.cuboid = cuboid;
+    }
 
     @Override
     public String getTag() {
@@ -30,8 +37,7 @@ public class GuildImpl implements Guild {
 
     @Override
     public Cuboid getCuboid() {
-        //TODO
-        return null;
+        return this.cuboid;
     }
 
 }

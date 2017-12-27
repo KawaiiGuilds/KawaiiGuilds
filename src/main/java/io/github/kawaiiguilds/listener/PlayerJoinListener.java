@@ -1,7 +1,7 @@
 package io.github.kawaiiguilds.listener;
 
 import io.github.kawaiiguilds.KawaiiGuilds;
-import io.github.kawaiiguilds.data.enums.MessageType;
+import io.github.kawaiiguilds.data.MessageType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
