@@ -44,7 +44,7 @@ public final class KawaiiGuilds extends JavaPlugin {
     }
 
     private void registerListeners(Listener... listeners) {
-        final PluginManager pluginManager = this.getServer().getPluginManager();
+        PluginManager pluginManager = this.getServer().getPluginManager();
         for (Listener listener : listeners) {
             pluginManager.registerEvents(listener, this);
         }
@@ -56,5 +56,9 @@ public final class KawaiiGuilds extends JavaPlugin {
 
     public GuildManager getGuildManager() {
         return this.guildManager;
+    }
+
+    public Database getMySQL() {
+        return this.mySQL;
     }
 }
