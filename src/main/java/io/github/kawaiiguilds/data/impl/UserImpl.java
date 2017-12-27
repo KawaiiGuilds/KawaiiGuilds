@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import java.util.Optional;
 import java.util.UUID;
 
-public class UserImpl implements User{
+public class UserImpl implements User {
 
     private final UUID uuid;
     private final String name;
