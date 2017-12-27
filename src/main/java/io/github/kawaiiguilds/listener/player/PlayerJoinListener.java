@@ -11,12 +11,6 @@ import org.bukkit.event.player.PlayerLevelChangeEvent;
 
 public class PlayerJoinListener implements Listener {
 
-    private final KawaiiGuilds kawaiiGuilds;
-
-    public PlayerJoinListener(KawaiiGuilds kawaiiGuilds) {
-        this.kawaiiGuilds = kawaiiGuilds;
-    }
-
     @EventHandler
     public void onPlayerJoinEvent(final PlayerJoinEvent event) {
         Player player = event.getPlayer();

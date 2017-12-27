@@ -8,12 +8,6 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class AsyncPlayerChatListener implements Listener {
 
-    private final KawaiiGuilds kawaiiGuilds;
-
-    public AsyncPlayerChatListener(KawaiiGuilds kawaiiGuilds) {
-        this.kawaiiGuilds = kawaiiGuilds;
-    }
-
     @EventHandler
     public void onAsyncPlayerChatEvent(final AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();

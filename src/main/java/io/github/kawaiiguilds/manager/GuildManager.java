@@ -10,5 +10,4 @@ public interface GuildManager {
     boolean tagExists(String tag);
     boolean nameExists(String name);
 
-
 }

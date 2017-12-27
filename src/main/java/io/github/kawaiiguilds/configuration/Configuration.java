@@ -1,6 +1,8 @@
 package io.github.kawaiiguilds.configuration;
 
+import io.github.kawaiiguilds.KawaiiGuilds;
 import io.github.kawaiiguilds.util.ColorUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -36,8 +38,8 @@ public class Configuration {
                 }
             }
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -53,8 +55,8 @@ public class Configuration {
                 }
             }
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -65,8 +67,8 @@ public class Configuration {
 
             try {
                 configFile.createNewFile();
-            } catch (IOException var3) {
-                var3.printStackTrace();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
             }
         }
 
@@ -80,8 +82,9 @@ public class Configuration {
             this.parse(this.clazz, config);
             config.save(configFile);
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        catch (Exception exception) {
+            exception.printStackTrace();
+            Bukkit.getPluginManager().disablePlugin(KawaiiGuilds.getProvidingPlugin(KawaiiGuilds.class));
 
         }
     }
@@ -93,8 +96,9 @@ public class Configuration {
             this.parseSave(this.clazz, config);
             config.save(configFile);
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        catch (Exception exception) {
+            exception.printStackTrace();
+            Bukkit.getPluginManager().disablePlugin(KawaiiGuilds.getProvidingPlugin(KawaiiGuilds.class));
         }
     }
 }
