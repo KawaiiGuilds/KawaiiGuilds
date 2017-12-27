@@ -12,7 +12,6 @@ public class UserImpl implements User{
 
     private final UUID uuid;
     private final String name;
-    private Player player;
     private Guild guild;
 
     public UserImpl(UUID uuid, String name) {

@@ -3,21 +3,21 @@ package io.github.kawaiiguilds.manager.impl;
 import io.github.kawaiiguilds.data.Guild;
 import io.github.kawaiiguilds.manager.GuildManager;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class GuildManagerImpl implements GuildManager {
 
-    private List<Guild> guildList = new ArrayList<>();
+    private Map<String, Guild> guilds =  new ConcurrentHashMap<>();
 
     @Override
-    public List<Guild> getGuildList() {
-        return guildList;
+    public Map<String, Guild> getGuilds() {
+        return this.guilds;
     }
 
     @Override
     public boolean tagExists(String tag) {
-        for (Guild guild : this.guildList) {
+        for(Guild guild : this.guilds.values()) {
             if (guild.getTag().equalsIgnoreCase(tag)) {
                 return true;
             }
@@ -27,7 +27,7 @@ public class GuildManagerImpl implements GuildManager {
 
     @Override
     public boolean nameExists(String name) {
-        for (Guild guild : this.guildList) {
+        for (Guild guild : this.guilds.values()) {
             if (guild.getName().equalsIgnoreCase(name)) {
                 return true;
             }
