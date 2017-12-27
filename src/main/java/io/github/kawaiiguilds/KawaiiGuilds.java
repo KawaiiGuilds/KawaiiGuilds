@@ -23,7 +23,7 @@ public final class KawaiiGuilds extends JavaPlugin{
 
         CommandExecutorBase cmdBase = new CommandExecutorBase("kawaiiguilds.command.basic");
         cmdBase.addSubCommand(new CreateArgs(this));
-        getCommand("guild").setExecutor(cmdBase);
+        this.getCommand("guild").setExecutor(cmdBase);
     }
 
     @Override
