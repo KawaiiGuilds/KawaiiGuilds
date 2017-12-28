@@ -48,6 +48,7 @@ public final class KawaiiGuilds extends JavaPlugin {
             this.mySQL.saveData();
         } catch (SQLException e) {
             e.printStackTrace();
+            //save to flat
         }
     }
 

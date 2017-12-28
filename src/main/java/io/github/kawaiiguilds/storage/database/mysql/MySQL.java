@@ -91,7 +91,7 @@ public class MySQL extends AbstractDatabase {
 
             this.getConnection().prepareStatement("SELECT * FROM `users`").executeUpdate(users);
         }
-        for(Guild guild : kawaiiGuilds.getGuildManager().getGuilds().values()) {
+        for(Guild guild : kawaiiGuilds.getGuildManager().getGuilds()) {
             String guilds = "INSERT INTO guilds (tag, name) VALUES (" +
                     "'" + guild.getTag() + "'," +
                     "'" + guild.getName() + "'" +

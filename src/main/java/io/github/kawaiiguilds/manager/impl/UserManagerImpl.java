@@ -5,25 +5,24 @@ import io.github.kawaiiguilds.data.User;
 import io.github.kawaiiguilds.data.impl.UserImpl;
 import io.github.kawaiiguilds.manager.UserManager;
 
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class UserManagerImpl implements UserManager{
 
-    private final Map<UUID, User> onlineUsers = new HashMap<>();
+    private final Map<UUID, User> onlineUsers = new ConcurrentHashMap<>();
 
     @Override
-    public Map<UUID, User> getOnlineUsers() {
-        return this.onlineUsers;
+    public Collection<User> getOnlineUsers() {
+        return this.onlineUsers.values();
     }
 
     @Override
     public void createUser(UUID uuid, String name, MessageType messageType) {
-        if (!onlineUsers.containsKey(uuid)) {
-            onlineUsers.put(uuid, new UserImpl(uuid, name, messageType));
-        }
-        getUser(uuid);
+        User user = new UserImpl(uuid, name, messageType);
+        onlineUsers.put(uuid, new UserImpl(uuid, name, messageType));
     }
 
     @Override
