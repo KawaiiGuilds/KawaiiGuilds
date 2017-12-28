@@ -1,6 +1,7 @@
 package io.github.kawaiiguilds.data.impl;
 
 import io.github.kawaiiguilds.data.Cuboid;
+import org.bukkit.Location;
 
 public class CuboidImpl implements Cuboid {
 
@@ -30,6 +31,7 @@ public class CuboidImpl implements Cuboid {
 
     @Override
     public boolean isInCuboid(int x, int z) {
-        return false;
+        return Math.abs(getCenterX() - x) <= size && Math.abs(getCenterZ() - z) <= size;
     }
+
 }

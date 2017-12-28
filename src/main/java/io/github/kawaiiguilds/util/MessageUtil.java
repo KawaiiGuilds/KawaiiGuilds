@@ -9,23 +9,20 @@ public class MessageUtil {
     private MessageUtil() {
     }
 
-    public static boolean sendMsg(CommandSender sender, String message) {
+    public static void sendMessage(CommandSender sender, String message) {
         sender.sendMessage(ColorUtil.fixColor(message));
-        return true;
     }
 
-    public static boolean sendMsg(Collection<? extends CommandSender> collection, String message) {
-        for (CommandSender sender : collection) sendMsg(sender, message);
-        return true;
+    public static void sendMessage(Collection<? extends CommandSender> collection, String message) {
+        for (CommandSender sender : collection) sendMessage(sender, message);
     }
 
-    public static boolean sendMsg(CommandSender sender, Collection<String> messages) {
-        for (String string : messages) sendMsg(sender, string);
-        return true;
+    public static void sendMessage(CommandSender sender, Collection<String> messages) {
+        for (String string : messages) sendMessage(sender, string);
     }
 
-    public static boolean sendMsg(Collection<? extends CommandSender> collection, Collection<String> messages) {
-        for (String string : messages) sendMsg(collection, string);
+    public static boolean sendessage(Collection<? extends CommandSender> collection, Collection<String> messages) {
+        for (String string : messages) sendMessage(collection, string);
         return true;
     }
 }

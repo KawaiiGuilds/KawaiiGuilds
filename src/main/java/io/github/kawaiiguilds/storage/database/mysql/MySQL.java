@@ -82,7 +82,7 @@ public class MySQL extends AbstractDatabase {
 
     @Override
     public void saveData() throws SQLException {
-        for (User user : kawaiiGuilds.getUserManager().getOnlineUsers().values()) {
+        for (User user : kawaiiGuilds.getUserManager().getOnlineUsers()) {
             String users = "INSERT INTO users (uuid, name) VALUES (" +
                     "'" + user.getUUID().toString() + "'," +
                     "'" + user.getName() + "'" +

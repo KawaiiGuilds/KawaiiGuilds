@@ -12,11 +12,23 @@ public interface User {
 
     String getName();
 
-    Optional<Player> getPlayer();
-
-    Optional<Guild> getGuild();
-
     MessageType getMessageType();
 
     void setMessageType(MessageType messageType);
+
+    int getKills();
+
+    void setKills(int kills);
+
+    int getDeaths();
+
+    void setDeaths(int deaths);
+
+    int getPoints();
+
+    void setPoints(int points);
+
+    Optional<Player> getPlayer();
+
+    Optional<Guild> getGuild();
 }
