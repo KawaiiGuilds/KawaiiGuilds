@@ -6,8 +6,8 @@ import io.github.kawaiiguilds.Messages;
 import io.github.kawaiiguilds.command.executorbase.SubCommand;
 import io.github.kawaiiguilds.data.Guild;
 import io.github.kawaiiguilds.data.User;
+import io.github.kawaiiguilds.data.impl.GuildImpl;
 import io.github.kawaiiguilds.manager.GuildManager;
-import io.github.kawaiiguilds.manager.UserManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -17,7 +17,8 @@ public class CreateArgs extends SubCommand {
     private final KawaiiGuilds kawaiiGuilds;
 
     public CreateArgs(KawaiiGuilds kawaiiGuilds) {
-        super("zaloz",
+        super(
+                "zaloz",
                 false,
                 "kawaiiguilds.command.create",
                 "&a/g &7zaloz &6<tag> <nazwa>");
@@ -30,7 +31,12 @@ public class CreateArgs extends SubCommand {
         User user = kawaiiGuilds.getUserManager().getUser(player.getUniqueId());
         GuildManager guildManager = kawaiiGuilds.getGuildManager();
 
-        if(user.getGuild() == null) {
+        if(args.length != 2){
+            player.sendMessage(getHelpMessage(""));
+            return;
+        }
+
+        if(user.getGuild() != null) {
             player.sendMessage(Messages.ERROR$HAS_GUILD);
             return;
         }
@@ -48,31 +54,39 @@ public class CreateArgs extends SubCommand {
             return;
         }
 
-        if(tag.length() != Config.TAGLENGTH) {
-            player.sendMessage(Messages.ERROR$TAG_LENGTH);
+        if(tag.length() < Config.TAG$MIN_LENGTH) {
+            player.sendMessage(Messages.ERROR$TAG_MIN_LENGTH.replace("{MINLENGTH}", Integer.toString(Config.TAG$MIN_LENGTH)));
             return;
         }
 
-        if(name.length() > Config.NAME_MINLENGTH) {
-            player.sendMessage(Messages.ERROR$NAME_MAX_LENGTH.replace("{MAXLENGTH}", Integer.toString(Config.NAME_MAXLENGTH)));
-            return;
-        }
-        if(name.length() > Config.NAME_MAXLENGTH) {
-            player.sendMessage(Messages.ERROR$NAME_MIN_LENGTH.replace("{MINLENGTH}", Integer.toString(Config.NAME_MINLENGTH)));
+        if(tag.length() > Config.TAG$MAX_LENGTH) {
+            player.sendMessage(Messages.ERROR$TAG_MAX_LENGTH.replace("{MAXLENGTH}", Integer.toString(Config.TAG$MAX_LENGTH)));
             return;
         }
 
-        if (!tag.matches("[a-zA-Z]+")) {
+        if(name.length() < Config.NAME$MIN_LENGTH) {
+            player.sendMessage(Messages.ERROR$NAME_MAX_LENGTH.replace("{MAXLENGTH}", Integer.toString(Config.NAME$MAX_LENGTH)));
+            return;
+        }
+        if(name.length() > Config.NAME$MAX_LENGTH) {
+            player.sendMessage(Messages.ERROR$NAME_MIN_LENGTH.replace("{MINLENGTH}", Integer.toString(Config.NAME$MIN_LENGTH)));
+            return;
+
+        }
+        if (!tag.matches(Config.REGEX)) {
             player.sendMessage(Messages.ERROR$TAG);
             return;
         }
 
-        if (!name.matches("[a-zA-Z]+")) {
+        if (!name.matches(Config.REGEX)) {
             player.sendMessage(Messages.ERROR$NAME);
             return;
         }
 
-
+        Guild guild = new GuildImpl(tag, name, user, player.getLocation());
+        kawaiiGuilds.getGuildManager().createGuild(guild);
+        user.setGuild(guild);
+        player.sendMessage(Messages.GUILD$CREATED.replace("{TAG}", guild.getTag()));
 
     }
 }

@@ -30,5 +30,7 @@ public interface User {
 
     Optional<Player> getPlayer();
 
-    Optional<Guild> getGuild();
+    Guild getGuild();
+
+    void setGuild(Guild guild);
 }

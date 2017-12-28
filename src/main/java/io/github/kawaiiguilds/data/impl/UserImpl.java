@@ -24,6 +24,7 @@ public class UserImpl implements User {
         this.name = name;
         this.messageType = messageType;
     }
+
     @Override
     public MessageType getMessageType() {
         return messageType;
@@ -79,7 +80,13 @@ public class UserImpl implements User {
     }
 
     @Override
-    public Optional<Guild> getGuild() {
-        return Optional.ofNullable(this.guild);
+    public Guild getGuild() {
+        return this.guild;
     }
+
+    @Override
+    public void setGuild(Guild guild) {
+        this.guild = guild;
+    }
+
 }

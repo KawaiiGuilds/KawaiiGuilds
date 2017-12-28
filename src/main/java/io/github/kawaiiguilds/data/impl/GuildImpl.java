@@ -2,22 +2,29 @@ package io.github.kawaiiguilds.data.impl;
 
 import io.github.kawaiiguilds.data.Cuboid;
 import io.github.kawaiiguilds.data.Guild;
+import io.github.kawaiiguilds.data.User;
 import org.bukkit.Location;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class GuildImpl implements Guild {
 
     private String tag;
     private String name;
     private Cuboid cuboid;
+    private User leader;
+    private List<User> members = new ArrayList<>();
     private Location base;
     private boolean pvp;
 
-    public GuildImpl(String tag, String name, Cuboid cuboid) {
+
+    public GuildImpl(String tag, String name, User leader, Location location) {
         this.tag = tag;
         this.name = name;
-        this.cuboid = cuboid;
+        this.leader = leader;
+        this.base = location;
     }
 
     @Override
@@ -46,12 +53,22 @@ public class GuildImpl implements Guild {
     }
 
     @Override
-    public Optional<Location> getHome() {
-        return Optional.ofNullable(this.base);
+    public User getLeader() {
+        return this.leader;
     }
 
     @Override
-    public void setHome(Location loc) {
+    public User setLeader(User user) {
+        return this.leader = user;
+    }
+
+    @Override
+    public Location getBase() {
+        return this.base;
+    }
+
+    @Override
+    public void setBase(Location loc) {
         this.base = loc;
     }
 

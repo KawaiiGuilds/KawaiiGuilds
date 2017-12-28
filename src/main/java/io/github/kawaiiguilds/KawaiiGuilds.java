@@ -8,23 +8,26 @@ import io.github.kawaiiguilds.manager.GuildManager;
 import io.github.kawaiiguilds.manager.UserManager;
 import io.github.kawaiiguilds.manager.impl.GuildManagerImpl;
 import io.github.kawaiiguilds.manager.impl.UserManagerImpl;
+import io.github.kawaiiguilds.storage.Storage;
+import io.github.kawaiiguilds.storage.StorageImpl;
 import io.github.kawaiiguilds.storage.database.Database;
 import io.github.kawaiiguilds.storage.database.mysql.MySQL;
 import io.github.kawaiiguilds.task.LoadMySQLTask;
 import io.github.kawaiiguilds.task.SaveMySQLTask;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.sql.SQLException;
+import java.io.IOException;
+import java.util.logging.Level;
 
 public final class KawaiiGuilds extends JavaPlugin {
 
     private final UserManager userManager = new UserManagerImpl();
     private final GuildManager guildManager = new GuildManagerImpl();
     private Database mySQL;
+    private final Storage storage = new StorageImpl(this);
 
     @Override
     public void onEnable() {
@@ -36,26 +39,31 @@ public final class KawaiiGuilds extends JavaPlugin {
         this.getCommand("kawaiiguilds").setExecutor(cmdBase);
 
         registerListeners(new PlayerJoinListener(this), new AsyncPlayerChatListener());
+        if(Config.USER_STORE.equalsIgnoreCase("mysql") || Config.GUILD_STORE.equalsIgnoreCase("mysql")) {
+            this.mySQL = new MySQL(this);
+            Bukkit.getScheduler().runTaskTimerAsynchronously(this, new LoadMySQLTask(this), 100L, 100L);
+            Bukkit.getScheduler().runTaskTimerAsynchronously(this, new SaveMySQLTask(this), 100L, 100L);
+        }
 
-        this.mySQL = new MySQL(this);
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new LoadMySQLTask(this), 100L, 100L);
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new SaveMySQLTask(this), 100L, 100L);
+        try {
+            this.storage.loadAll();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onDisable() {
         try {
-            this.mySQL.saveData();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            //save to flat
+            storage.saveAll();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 
     private void registerListeners(Listener... listeners) {
-        PluginManager pluginManager = this.getServer().getPluginManager();
         for (Listener listener : listeners) {
-            pluginManager.registerEvents(listener, this);
+            this.getServer().getPluginManager().registerEvents(listener, this);
         }
     }
 
@@ -69,5 +77,9 @@ public final class KawaiiGuilds extends JavaPlugin {
 
     public Database getMySQL() {
         return this.mySQL;
+    }
+
+    public Storage getStorage() {
+        return this.storage;
     }
 }

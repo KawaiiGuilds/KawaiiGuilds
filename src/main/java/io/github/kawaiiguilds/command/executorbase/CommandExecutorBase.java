@@ -123,7 +123,7 @@ public class CommandExecutorBase implements TabExecutor{
 
     static String getHelpMessage(SubCommand subCommand, String baseCommandLabel) {
         StringBuilder resultBuilder = new StringBuilder();
-        resultBuilder.append(baseCommandLabel).append(subCommand.getName());
+        resultBuilder.append(baseCommandLabel).append("");
         if (!subCommand.getArgumentNames().isEmpty()) {
             for (String argument : subCommand.getArgumentNames()) {
                 resultBuilder.append(argument);

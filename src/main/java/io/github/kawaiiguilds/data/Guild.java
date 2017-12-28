@@ -2,8 +2,6 @@ package io.github.kawaiiguilds.data;
 
 import org.bukkit.Location;
 
-import java.util.Optional;
-
 public interface Guild {
 
     String getTag();
@@ -14,9 +12,12 @@ public interface Guild {
 
     Cuboid getCuboid();
 
-    Optional<Location> getHome();
+    User getLeader();
+    User setLeader(User user);
 
-    void setHome(Location loc);
+    Location getBase();
+
+    void setBase(Location loc);
 
     boolean isPvp();
 

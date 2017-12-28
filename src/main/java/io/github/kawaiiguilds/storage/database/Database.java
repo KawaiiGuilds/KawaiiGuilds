@@ -14,8 +14,11 @@ public interface Database {
 
     void checkTable();
 
-    void saveData() throws SQLException;
+    void saveUserData() throws SQLException;
 
-    void loadData() throws SQLException;
+    void saveGuildData() throws SQLException;
 
+    void loadUserData() throws SQLException;
+
+    void loadGuildData() throws SQLException;
 }

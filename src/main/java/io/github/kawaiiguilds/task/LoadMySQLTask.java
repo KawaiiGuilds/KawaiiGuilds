@@ -1,9 +1,8 @@
 package io.github.kawaiiguilds.task;
 
+import io.github.kawaiiguilds.Config;
 import io.github.kawaiiguilds.KawaiiGuilds;
-import io.github.kawaiiguilds.storage.database.mysql.MySQL;
 import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.SQLException;
 
@@ -17,11 +16,16 @@ public class LoadMySQLTask implements Runnable {
 
     @Override
     public void run() {
-        try {
-            kawaiiGuilds.getMySQL().loadData();
+        /*try {
+            if(Config.USER_STORE.equalsIgnoreCase("mysql")) {
+                kawaiiGuilds.getMySQL().loadUserData();
+            }
+            if(Config.GUILD_STORE.equalsIgnoreCase("mysql")) {
+               kawaiiGuilds.getMySQL().loadGuildData();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             Bukkit.getPluginManager().disablePlugin(KawaiiGuilds.getProvidingPlugin(KawaiiGuilds.class));
-        }
+        }*/
     }
 }

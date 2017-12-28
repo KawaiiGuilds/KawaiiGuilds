@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Level;
 
 public class MySQL extends AbstractDatabase {
 
@@ -28,6 +29,7 @@ public class MySQL extends AbstractDatabase {
         source = new HikariDataSource(config);
 
         connect();
+        Bukkit.getLogger().log(Level.INFO, "Polaczono z baza MySQL");
     }
 
     @Override
@@ -48,7 +50,8 @@ public class MySQL extends AbstractDatabase {
 
     @Override
     public void disconnect() throws SQLException {
-        saveData();
+        saveUserData();
+        saveGuildData();
         getConnection().close();
     }
 
@@ -70,8 +73,8 @@ public class MySQL extends AbstractDatabase {
 
     @Override
     public void checkTable() {
-        String users = "CREATE TABLE IF NOT EXISTS users(uuid VARCHAR (36) NOT NULL , name VARCHAR (16) NOT NULL , PRIMARY KEY(uuid));";
-        String guilds = "CREATE TABLE IF NOT EXISTS guilds(tag VARCHAR (4) NOT NULL, name VARCHAR(16) NOT NULL, PRIMARY KEY(tag));";
+        String users = "CREATE TABLE IF NOT EXISTS users(uuid VARCHAR(36) NOT NULL, name VARCHAR(16) NOT NULL, PRIMARY KEY(uuid));";
+        String guilds = "CREATE TABLE IF NOT EXISTS guilds(tag VARCHAR(4) NOT NULL, name VARCHAR(16) NOT NULL, leader VARCHAR(36) NOT NULL, PRIMARY KEY(tag));";
         try {
             this.getConnection().prepareStatement("SELECT * FROM `users`").executeUpdate(users);
             this.getConnection().prepareStatement("SELECT * FROM 'guilds'").executeUpdate(guilds);
@@ -81,28 +84,37 @@ public class MySQL extends AbstractDatabase {
     }
 
     @Override
-    public void saveData() throws SQLException {
+    public void saveUserData() throws SQLException {
         for (User user : kawaiiGuilds.getUserManager().getOnlineUsers()) {
             String users = "INSERT INTO users (uuid, name) VALUES (" +
                     "'" + user.getUUID().toString() + "'," +
                     "'" + user.getName() + "'" +
                     ") ON DUPLICATE KEY UPDATE " +
                     "name='" + user.getName() + "';";
+            this.getConnection().prepareStatement("SELECT * FROM `users`").executeUpdate(users); }
+    }
 
-            this.getConnection().prepareStatement("SELECT * FROM `users`").executeUpdate(users);
-        }
+    @Override
+    public void saveGuildData() throws SQLException {
         for(Guild guild : kawaiiGuilds.getGuildManager().getGuilds()) {
-            String guilds = "INSERT INTO guilds (tag, name) VALUES (" +
+            String guilds = "INSERT INTO guilds (tag, name, leader) VALUES (" +
                     "'" + guild.getTag() + "'," +
-                    "'" + guild.getName() + "'" +
+                    "'" + guild.getName() + "'," +
+                    "'" + guild.getLeader().getName() + "'" +
                     ") ON DUPLICATE KEY UPDATE " +
-                    "tag='" + guild.getTag() + "'," +
-                    "name='" + guild.getName() + "';";
+                    "name='" + guild.getName() + "'," +
+                    "leader='" + guild.getLeader().getName() + "';";
             this.getConnection().prepareStatement("SELECT * FROM `guilds`").executeUpdate(guilds);
         }
     }
+
     @Override
-    public void loadData() throws SQLException {
+    public void loadUserData() throws SQLException {
+
+    }
+
+    @Override
+    public void loadGuildData() throws SQLException {
 
     }
 

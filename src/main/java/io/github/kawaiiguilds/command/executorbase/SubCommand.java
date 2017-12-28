@@ -43,7 +43,7 @@ public abstract class SubCommand {
     public SubCommand(String commandName, boolean canConsoleExecute, String permission, String helpMessage) {
         Validate.notNull(commandName);
         this.commandName = commandName.toLowerCase(Locale.ENGLISH);
-        this.help = (helpMessage == null ? "" : ColorUtil.fixColor(helpMessage));
+        this.help = ColorUtil.fixColor(helpMessage);
         this.permission = permission;
         this.argumentNames = new ArrayList<>();
         this.commandFilters = new ArrayList<>();
