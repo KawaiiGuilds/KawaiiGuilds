@@ -1,5 +1,6 @@
 package io.github.kawaiiguilds.util;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 import java.util.Collection;
@@ -21,8 +22,12 @@ public class MessageUtil {
         for (String string : messages) sendMessage(sender, string);
     }
 
-    public static boolean sendessage(Collection<? extends CommandSender> collection, Collection<String> messages) {
+    public static boolean sendMessage(Collection<? extends CommandSender> collection, Collection<String> messages) {
         for (String string : messages) sendMessage(collection, string);
         return true;
+    }
+
+    public static void sendBroadcastMessage(String message) {
+        Bukkit.getOnlinePlayers().forEach((p) -> sendMessage(p, message));
     }
 }

@@ -1,8 +1,7 @@
 package io.github.kawaiiguilds.manager.impl;
 
-import io.github.kawaiiguilds.data.enums.MessageType;
-import io.github.kawaiiguilds.data.User;
-import io.github.kawaiiguilds.data.impl.UserImpl;
+import io.github.kawaiiguilds.basic.User;
+import io.github.kawaiiguilds.basic.impl.UserImpl;
 import io.github.kawaiiguilds.manager.UserManager;
 
 import java.util.Collection;
@@ -20,9 +19,8 @@ public class UserManagerImpl implements UserManager{
     }
 
     @Override
-    public void createUser(UUID uuid, String name, MessageType messageType) {
-        User user = new UserImpl(uuid, name, messageType);
-        onlineUsers.put(uuid, new UserImpl(uuid, name, messageType));
+    public void createUser(UUID uuid, String name) {
+        onlineUsers.put(uuid, new UserImpl(uuid, name));
     }
 
     @Override

@@ -1,11 +1,13 @@
 package io.github.kawaiiguilds.manager;
 
-import io.github.kawaiiguilds.data.Guild;
+import io.github.kawaiiguilds.basic.Guild;
+import org.bukkit.Location;
+
 import java.util.Collection;
 
 public interface GuildManager {
 
-    void createGuild(Guild guild);
+    void createGuild(Guild guild, Location location);
 
     Collection<Guild> getGuilds();
 

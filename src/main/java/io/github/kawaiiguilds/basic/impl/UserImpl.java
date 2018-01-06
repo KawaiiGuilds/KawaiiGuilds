@@ -1,8 +1,8 @@
-package io.github.kawaiiguilds.data.impl;
+package io.github.kawaiiguilds.basic.impl;
 
-import io.github.kawaiiguilds.data.Guild;
-import io.github.kawaiiguilds.data.enums.MessageType;
-import io.github.kawaiiguilds.data.User;
+import io.github.kawaiiguilds.basic.Guild;
+import io.github.kawaiiguilds.basic.User;
+import io.github.kawaiiguilds.util.MessageUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -14,24 +14,13 @@ public class UserImpl implements User {
     private final UUID uuid;
     private final String name;
     private Guild guild;
-    private MessageType messageType;
     private int kills;
     private int deaths;
     private int points;
 
-    public UserImpl(UUID uuid, String name, MessageType messageType) {
+    public UserImpl(UUID uuid, String name) {
         this.uuid = uuid;
         this.name = name;
-        this.messageType = messageType;
-    }
-
-    @Override
-    public MessageType getMessageType() {
-        return messageType;
-    }
-    @Override
-    public void setMessageType(MessageType messageType) {
-        this.messageType = messageType;
     }
 
     @Override
@@ -75,8 +64,13 @@ public class UserImpl implements User {
     }
 
     @Override
-    public Optional<Player> getPlayer() {
-        return Optional.ofNullable(Bukkit.getPlayer(uuid));
+    public void sendMessage(String message) {
+        MessageUtil.sendMessage(getPlayer(), message);
+    }
+
+    @Override
+    public Player getPlayer() {
+        return Bukkit.getPlayer(uuid);
     }
 
     @Override
@@ -87,6 +81,11 @@ public class UserImpl implements User {
     @Override
     public void setGuild(Guild guild) {
         this.guild = guild;
+    }
+
+    @Override
+    public boolean hasGuild() {
+        return this.guild == null;
     }
 
 }

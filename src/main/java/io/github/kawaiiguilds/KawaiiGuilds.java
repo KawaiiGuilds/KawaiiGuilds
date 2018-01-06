@@ -1,8 +1,14 @@
 package io.github.kawaiiguilds;
 
+import io.github.kawaiiguilds.basic.Cuboid;
+import io.github.kawaiiguilds.basic.impl.CuboidImpl;
 import io.github.kawaiiguilds.command.basic.args.CreateArgs;
+import io.github.kawaiiguilds.command.basic.args.DeleteArgs;
+import io.github.kawaiiguilds.command.basic.args.InviteArgs;
 import io.github.kawaiiguilds.command.executorbase.CommandExecutorBase;
 import io.github.kawaiiguilds.listener.AsyncPlayerChatListener;
+import io.github.kawaiiguilds.listener.BlockPlaceListener;
+import io.github.kawaiiguilds.listener.PlayerInteractListener;
 import io.github.kawaiiguilds.listener.PlayerJoinListener;
 import io.github.kawaiiguilds.manager.GuildManager;
 import io.github.kawaiiguilds.manager.UserManager;
@@ -14,18 +20,19 @@ import io.github.kawaiiguilds.storage.database.Database;
 import io.github.kawaiiguilds.storage.database.mysql.MySQL;
 import io.github.kawaiiguilds.task.LoadMySQLTask;
 import io.github.kawaiiguilds.task.SaveMySQLTask;
+import io.github.kawaiiguilds.util.PluginUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
 
 public final class KawaiiGuilds extends JavaPlugin {
 
     private final UserManager userManager = new UserManagerImpl();
     private final GuildManager guildManager = new GuildManagerImpl();
+    private final Cuboid cuboid = new CuboidImpl();
     private Database mySQL;
     private final Storage storage = new StorageImpl(this);
 
@@ -36,13 +43,20 @@ public final class KawaiiGuilds extends JavaPlugin {
 
         CommandExecutorBase cmdBase = new CommandExecutorBase("kawaiiguilds.command.basic");
         cmdBase.addSubCommand(new CreateArgs(this));
+        cmdBase.addSubCommand(new InviteArgs(this));
         this.getCommand("kawaiiguilds").setExecutor(cmdBase);
 
-        registerListeners(new PlayerJoinListener(this), new AsyncPlayerChatListener());
+        PluginUtil.registerListeners(this,
+                new PlayerJoinListener(this),
+                new AsyncPlayerChatListener(),
+                new BlockPlaceListener(this),
+                new PlayerInteractListener(this)
+        );
+
         if(Config.USER_STORE.equalsIgnoreCase("mysql") || Config.GUILD_STORE.equalsIgnoreCase("mysql")) {
             this.mySQL = new MySQL(this);
-            Bukkit.getScheduler().runTaskTimerAsynchronously(this, new LoadMySQLTask(this), 100L, 100L);
-            Bukkit.getScheduler().runTaskTimerAsynchronously(this, new SaveMySQLTask(this), 100L, 100L);
+            //Bukkit.getScheduler().runTaskTimerAsynchronously(this, new LoadMySQLTask(this), 100L, 100L);
+            //Bukkit.getScheduler().runTaskTimerAsynchronously(this, new SaveMySQLTask(this), 100L, 100L);
         }
 
         try {
@@ -61,12 +75,6 @@ public final class KawaiiGuilds extends JavaPlugin {
         }
     }
 
-    private void registerListeners(Listener... listeners) {
-        for (Listener listener : listeners) {
-            this.getServer().getPluginManager().registerEvents(listener, this);
-        }
-    }
-
     public UserManager getUserManager() {
         return this.userManager;
     }
@@ -81,5 +89,9 @@ public final class KawaiiGuilds extends JavaPlugin {
 
     public Storage getStorage() {
         return this.storage;
+    }
+
+    public Cuboid getCuboid() {
+        return cuboid;
     }
 }

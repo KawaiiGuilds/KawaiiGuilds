@@ -2,7 +2,6 @@ package io.github.kawaiiguilds;
 
 import io.github.kawaiiguilds.configuration.Configuration;
 import io.github.kawaiiguilds.configuration.Ignore;
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.io.File;
 
@@ -30,6 +29,8 @@ public class Config {
 
     public static int NAME$MAX_LENGTH = 16;
     public static int NAME$MIN_LENGTH = 4;
+
+    public static boolean GUILD$CREATED_BROADCAST = true;
 
     public static void init(File file) {
         configuration = new Configuration(file, Config.class);

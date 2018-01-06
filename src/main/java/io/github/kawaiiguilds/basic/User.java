@@ -1,9 +1,7 @@
-package io.github.kawaiiguilds.data;
+package io.github.kawaiiguilds.basic;
 
-import io.github.kawaiiguilds.data.enums.MessageType;
 import org.bukkit.entity.Player;
 
-import java.util.Optional;
 import java.util.UUID;
 
 public interface User {
@@ -12,9 +10,7 @@ public interface User {
 
     String getName();
 
-    MessageType getMessageType();
-
-    void setMessageType(MessageType messageType);
+    void sendMessage(String message);
 
     int getKills();
 
@@ -28,9 +24,11 @@ public interface User {
 
     void setPoints(int points);
 
-    Optional<Player> getPlayer();
+    Player getPlayer();
 
     Guild getGuild();
 
     void setGuild(Guild guild);
+
+    boolean hasGuild();
 }

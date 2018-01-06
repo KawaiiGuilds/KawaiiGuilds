@@ -1,13 +1,11 @@
-package io.github.kawaiiguilds.data.impl;
+package io.github.kawaiiguilds.basic.impl;
 
-import io.github.kawaiiguilds.data.Cuboid;
-import io.github.kawaiiguilds.data.Guild;
-import io.github.kawaiiguilds.data.User;
+import io.github.kawaiiguilds.basic.Cuboid;
+import io.github.kawaiiguilds.basic.Guild;
+import io.github.kawaiiguilds.basic.User;
 import org.bukkit.Location;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class GuildImpl implements Guild {
 
@@ -18,7 +16,7 @@ public class GuildImpl implements Guild {
     private List<User> members = new ArrayList<>();
     private Location base;
     private boolean pvp;
-
+    private final Collection<UUID> invites = new ArrayList<>();
 
     public GuildImpl(String tag, String name, User leader, Location location) {
         this.tag = tag;
@@ -53,16 +51,6 @@ public class GuildImpl implements Guild {
     }
 
     @Override
-    public User getLeader() {
-        return this.leader;
-    }
-
-    @Override
-    public User setLeader(User user) {
-        return this.leader = user;
-    }
-
-    @Override
     public Location getBase() {
         return this.base;
     }
@@ -80,6 +68,38 @@ public class GuildImpl implements Guild {
     @Override
     public void setPvp(boolean pvp) {
         this.pvp = pvp;
+    }
+
+    @Override
+    public void setLeader(User user) {
+        this.addMember(user);
+    }
+
+    @Override
+    public User getLeader() {
+        return this.leader;
+    }
+
+    @Override
+    public void addInvite(User user) {
+        this.invites.add(user.getUUID());
+    }
+
+    @Override
+    public boolean hasInvite(User user) {
+        return invites.contains(user.getUUID());
+    }
+
+    @Override
+    public void removeInvite(User user) {
+
+    }
+
+    public void addMember(User user) {
+        if (this.members.contains(user)) {
+            return;
+        }
+        members.add(user);
     }
 
 }

@@ -1,4 +1,4 @@
-package io.github.kawaiiguilds.data;
+package io.github.kawaiiguilds.basic;
 
 import org.bukkit.Location;
 

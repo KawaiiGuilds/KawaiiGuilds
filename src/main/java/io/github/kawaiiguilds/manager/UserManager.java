@@ -1,10 +1,8 @@
 package io.github.kawaiiguilds.manager;
 
-import io.github.kawaiiguilds.data.enums.MessageType;
-import io.github.kawaiiguilds.data.User;
+import io.github.kawaiiguilds.basic.User;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.UUID;
 
 public interface UserManager {
@@ -15,6 +13,6 @@ public interface UserManager {
 
     User getUser(String name);
 
-    void createUser(UUID uuid, String name, MessageType messageType);
+    void createUser(UUID uuid, String name);
 
 }

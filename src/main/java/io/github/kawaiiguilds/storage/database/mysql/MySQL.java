@@ -4,8 +4,8 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import io.github.kawaiiguilds.Config;
 import io.github.kawaiiguilds.KawaiiGuilds;
-import io.github.kawaiiguilds.data.Guild;
-import io.github.kawaiiguilds.data.User;
+import io.github.kawaiiguilds.basic.Guild;
+import io.github.kawaiiguilds.basic.User;
 import io.github.kawaiiguilds.storage.database.AbstractDatabase;
 import org.bukkit.Bukkit;
 

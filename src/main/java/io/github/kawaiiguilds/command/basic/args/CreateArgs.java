@@ -4,10 +4,11 @@ import io.github.kawaiiguilds.Config;
 import io.github.kawaiiguilds.KawaiiGuilds;
 import io.github.kawaiiguilds.Messages;
 import io.github.kawaiiguilds.command.executorbase.SubCommand;
-import io.github.kawaiiguilds.data.Guild;
-import io.github.kawaiiguilds.data.User;
-import io.github.kawaiiguilds.data.impl.GuildImpl;
+import io.github.kawaiiguilds.basic.Guild;
+import io.github.kawaiiguilds.basic.User;
+import io.github.kawaiiguilds.basic.impl.GuildImpl;
 import io.github.kawaiiguilds.manager.GuildManager;
+import io.github.kawaiiguilds.util.MessageUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -36,7 +37,7 @@ public class CreateArgs extends SubCommand {
             return;
         }
 
-        if(user.getGuild() != null) {
+        if(!user.hasGuild()) {
             player.sendMessage(Messages.ERROR$HAS_GUILD);
             return;
         }
@@ -84,9 +85,14 @@ public class CreateArgs extends SubCommand {
         }
 
         Guild guild = new GuildImpl(tag, name, user, player.getLocation());
-        kawaiiGuilds.getGuildManager().createGuild(guild);
+        kawaiiGuilds.getGuildManager().createGuild(guild, player.getLocation());
         user.setGuild(guild);
-        player.sendMessage(Messages.GUILD$CREATED.replace("{TAG}", guild.getTag()));
+
+        if (Config.GUILD$CREATED_BROADCAST) {
+            MessageUtil.sendBroadcastMessage(Messages.GUILD$CREATED_BROADCAST.replace("{PLAYER}", player.getName()).replace("{TAG}", guild.getTag()).replace("{NAME}", guild.getName()));
+        } else {
+            player.sendMessage(Messages.GUILD$CREATED.replace("{TAG}", guild.getTag()).replace("{NAME}", guild.getName()));
+        }
 
     }
 }

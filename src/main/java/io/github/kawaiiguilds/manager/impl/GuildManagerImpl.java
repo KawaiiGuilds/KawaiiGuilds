@@ -1,14 +1,12 @@
 package io.github.kawaiiguilds.manager.impl;
 
-import io.github.kawaiiguilds.data.Guild;
-import io.github.kawaiiguilds.data.User;
-import io.github.kawaiiguilds.data.impl.GuildImpl;
+import io.github.kawaiiguilds.basic.Guild;
 import io.github.kawaiiguilds.manager.GuildManager;
+import io.github.kawaiiguilds.manager.util.GuildCreateUtil;
 import org.bukkit.Location;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class GuildManagerImpl implements GuildManager {
@@ -16,8 +14,9 @@ public class GuildManagerImpl implements GuildManager {
     private final Map<String, Guild> guilds = new ConcurrentHashMap<>();
 
     @Override
-    public void createGuild(Guild guild) {
+    public void createGuild(Guild guild, Location location) {
         this.guilds.put(guild.getTag(), guild);
+        GuildCreateUtil.startBaseGuild(location);
     }
 
     @Override

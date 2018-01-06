@@ -1,19 +1,18 @@
-package io.github.kawaiiguilds.data;
+package io.github.kawaiiguilds.basic;
 
 import org.bukkit.Location;
 
 public interface Guild {
 
     String getTag();
+
     void setTag(String tag);
 
     String getName();
+
     void setName(String name);
 
     Cuboid getCuboid();
-
-    User getLeader();
-    User setLeader(User user);
 
     Location getBase();
 
@@ -23,4 +22,13 @@ public interface Guild {
 
     void setPvp(boolean pvp);
 
+    void setLeader(User user);
+
+    User getLeader();
+
+    void addInvite(User user);
+
+    boolean hasInvite(User user);
+
+    void removeInvite(User user);
 }

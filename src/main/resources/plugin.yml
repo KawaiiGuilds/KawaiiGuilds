@@ -2,7 +2,7 @@ name: KawaiiGuilds
 main: io.github.kawaiiguilds.KawaiiGuilds
 version: ${project.version}
 authors: [3NzxHsQ, delete404]
-
+softdepend: ['BungeeTabListPlus']
 commands:
   kawaiiguilds:
     aliases: [kg, guild, gildie, g]

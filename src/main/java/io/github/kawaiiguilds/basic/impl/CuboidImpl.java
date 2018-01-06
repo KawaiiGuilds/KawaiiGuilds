@@ -1,7 +1,6 @@
-package io.github.kawaiiguilds.data.impl;
+package io.github.kawaiiguilds.basic.impl;
 
-import io.github.kawaiiguilds.data.Cuboid;
-import org.bukkit.Location;
+import io.github.kawaiiguilds.basic.Cuboid;
 
 public class CuboidImpl implements Cuboid {
 
