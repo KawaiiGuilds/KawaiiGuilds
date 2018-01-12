@@ -1,5 +1,7 @@
 package io.github.kawaiiguilds.storage.database;
 
+import io.github.kawaiiguilds.storage.Callback;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -21,8 +23,8 @@ public interface Database {
 
     void loadGuildData() throws SQLException;
 
-    void execute(String query) throws Exception;
+    void execute(String query) throws SQLException;
 
-    void query(String query, ResultSet result) throws Exception;
+    void query(String query, Callback<ResultSet> rs) throws Exception;
 
 }

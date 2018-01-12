@@ -6,6 +6,7 @@ import io.github.kawaiiguilds.Config;
 import io.github.kawaiiguilds.KawaiiGuilds;
 import io.github.kawaiiguilds.basic.Guild;
 import io.github.kawaiiguilds.basic.User;
+import io.github.kawaiiguilds.storage.Callback;
 import io.github.kawaiiguilds.storage.database.AbstractDatabase;
 import org.bukkit.Bukkit;
 
@@ -137,16 +138,16 @@ public class MySQL extends AbstractDatabase {
 
 
     @Override
-    public void execute(String query) throws Exception {
+    public void execute(String query) throws SQLException {
         PreparedStatement statement = source.getConnection().prepareStatement(query);
         statement.executeUpdate();
         statement.close();
     }
 
     @Override
-    public void query(String query, Callback<ResultSet> result) throws Exception {
+    public void query(String query, Callback<ResultSet> rs) throws Exception {
         PreparedStatement statement = source.getConnection().prepareStatement(query);
-        result.result(statement.executeQuery());
+        rs.result(statement.executeQuery());
         statement.close();
     }
 }

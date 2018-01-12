@@ -4,12 +4,12 @@ import io.github.kawaiiguilds.KawaiiGuilds;
 import io.github.kawaiiguilds.basic.Guild;
 import io.github.kawaiiguilds.basic.User;
 import io.github.kawaiiguilds.basic.impl.GuildImpl;
-import io.github.kawaiiguilds.basic.impl.UserImpl;
 import io.github.kawaiiguilds.manager.GuildManager;
 import io.github.kawaiiguilds.manager.util.GuildCreateUtil;
 import org.bukkit.Location;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -91,7 +91,7 @@ public class GuildManagerImpl implements GuildManager {
 
     @Override
     public boolean nameExists(String name) {
-        return getGuildByName(name) != null;
+        return this.getGuildByName(name) != null;
 
     }
 
