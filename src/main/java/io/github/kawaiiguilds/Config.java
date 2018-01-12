@@ -31,6 +31,7 @@ public class Config {
     public static int NAME$MIN_LENGTH = 4;
 
     public static boolean GUILD$CREATED_BROADCAST = true;
+    public static int CUBOID$SIZE = 60;
 
     public static void init(File file) {
         configuration = new Configuration(file, Config.class);

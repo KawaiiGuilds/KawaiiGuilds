@@ -5,7 +5,10 @@ import io.github.kawaiiguilds.basic.Guild;
 import io.github.kawaiiguilds.basic.User;
 import org.bukkit.Location;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class GuildImpl implements Guild {
 
@@ -13,16 +16,19 @@ public class GuildImpl implements Guild {
     private String name;
     private Cuboid cuboid;
     private User leader;
-    private List<User> members = new ArrayList<>();
     private Location base;
     private boolean pvp;
+    private final Map<UUID, User> members = new ConcurrentHashMap<>();
     private final Collection<UUID> invites = new ArrayList<>();
 
-    public GuildImpl(String tag, String name, User leader, Location location) {
+    public GuildImpl(String tag, String name) {
         this.tag = tag;
         this.name = name;
-        this.leader = leader;
-        this.base = location;
+    }
+
+    public GuildImpl(ResultSet rs) throws SQLException {
+        this.tag = rs.getString("tag");
+        this.name = rs.getString("name");
     }
 
     @Override
@@ -92,14 +98,26 @@ public class GuildImpl implements Guild {
 
     @Override
     public void removeInvite(User user) {
-
+        this.invites.remove(user.getUUID());
     }
 
+    @Override
     public void addMember(User user) {
-        if (this.members.contains(user)) {
-            return;
-        }
-        members.add(user);
+        this.members.put(user.getUUID(), user);
     }
 
+    @Override
+    public void removeMember(User user) {
+        this.members.remove(user.getUUID());
+    }
+
+    @Override
+    public boolean isMember(UUID uuid) {
+        return members.keySet().contains(uuid);
+    }
+
+    @Override
+    public Map<UUID, User> getMembers() {
+        return this.members;
+    }
 }

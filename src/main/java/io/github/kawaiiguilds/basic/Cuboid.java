@@ -1,8 +1,11 @@
 package io.github.kawaiiguilds.basic;
 
 import org.bukkit.Location;
+import org.bukkit.World;
 
 public interface Cuboid {
+
+    World getWorld();
 
     int getCenterX();
 

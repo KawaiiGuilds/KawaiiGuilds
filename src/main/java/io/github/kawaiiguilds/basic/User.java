@@ -10,6 +10,8 @@ public interface User {
 
     String getName();
 
+    void setName(String name);
+
     void sendMessage(String message);
 
     int getKills();
@@ -31,4 +33,5 @@ public interface User {
     void setGuild(Guild guild);
 
     boolean hasGuild();
+
 }

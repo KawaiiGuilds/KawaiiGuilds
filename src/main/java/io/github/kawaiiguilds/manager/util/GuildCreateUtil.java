@@ -9,7 +9,7 @@ public class GuildCreateUtil {
     private GuildCreateUtil() {
     }
 
-    public static void startBaseGuild(Location location) {
+    public static void createBaseGuild(Location location) {
         Location c = new Location(location.getWorld(), location.getX(), location.getY(), location.getZ());
         c.setY(c.getY() - 1);
         for (Location loc : SpaceUtil.getSquare(c, 4, 3)) {

@@ -14,17 +14,8 @@ public class MessageUtil {
         sender.sendMessage(ColorUtil.fixColor(message));
     }
 
-    public static void sendMessage(Collection<? extends CommandSender> collection, String message) {
-        for (CommandSender sender : collection) sendMessage(sender, message);
-    }
-
     public static void sendMessage(CommandSender sender, Collection<String> messages) {
         for (String string : messages) sendMessage(sender, string);
-    }
-
-    public static boolean sendMessage(Collection<? extends CommandSender> collection, Collection<String> messages) {
-        for (String string : messages) sendMessage(collection, string);
-        return true;
     }
 
     public static void sendBroadcastMessage(String message) {

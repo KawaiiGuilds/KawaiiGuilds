@@ -18,7 +18,25 @@ public class StorageImpl implements Storage {
     public void loadAll() throws IOException {
         if(Config.USER_STORE.equalsIgnoreCase("mysql")) {
             try {
-                kawaiiGuilds.getMySQL().saveUserData();
+                this.kawaiiGuilds.getMySQL().loadUserData();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if(Config.GUILD_STORE.equalsIgnoreCase("mysql")) {
+            try {
+                this.kawaiiGuilds.getMySQL().loadGuildData();
+            }catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void saveAll() throws IOException {
+        if(Config.USER_STORE.equalsIgnoreCase("mysql")) {
+            try {
+                this.kawaiiGuilds.getMySQL().saveUserData();
             } catch (SQLException e) {
                 e.printStackTrace();
                 //disable plugin
@@ -28,7 +46,7 @@ public class StorageImpl implements Storage {
         }
         if(Config.GUILD_STORE.equalsIgnoreCase("mysql")) {
             try {
-                kawaiiGuilds.getMySQL().saveGuildData();
+                this.kawaiiGuilds.getMySQL().saveGuildData();
             } catch (SQLException e) {
                 e.printStackTrace();
                 //disable plugin
@@ -36,10 +54,5 @@ public class StorageImpl implements Storage {
         }else{
             //flat
         }
-    }
-
-    @Override
-    public void saveAll() throws IOException {
-
     }
 }

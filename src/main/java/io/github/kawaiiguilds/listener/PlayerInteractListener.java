@@ -2,6 +2,7 @@ package io.github.kawaiiguilds.listener;
 
 import io.github.kawaiiguilds.KawaiiGuilds;
 import io.github.kawaiiguilds.basic.Cuboid;
+import io.github.kawaiiguilds.basic.Guild;
 import io.github.kawaiiguilds.basic.User;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -22,7 +23,6 @@ public class PlayerInteractListener implements Listener {
     @EventHandler
     public void onPlayerInteractEvent(final PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        User user = kawaiiGuilds.getUserManager().getUser(player.getUniqueId());
         Block block = event.getClickedBlock();
         if (block == null) {
             return;
@@ -31,11 +31,7 @@ public class PlayerInteractListener implements Listener {
             return;
         }
         if (block.getType() == Material.DRAGON_EGG) {
-            Cuboid cuboid = kawaiiGuilds.getCuboid();
-            if (cuboid != null) {
-                event.setCancelled(true);
-                //TODO send information of guild
-            }
+
         }
     }
 }
