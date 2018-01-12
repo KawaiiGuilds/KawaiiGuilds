@@ -35,12 +35,13 @@ public class Messages {
     public static String ERROR$OTHER_GUILD = "&cNie mozesz budowac na terenie nie swojej gildii";
 
     public static String GUILD$CREATED = "&aZalozyles gildiie o tagu &6{TAG}";
-    public static String GUILD$CREATED_BROADCAST = "&7Gracz &6{PLAYER} &7zalozyl gildie o tagu &6{TAG} &7i o nazwie &6{NAME}";
+    public static String GUILD$CREATED_BROADCAST = "&7Gracz &6{PLAYER} &7zalozyl gildie o tagu &6{TAG} &7i nazwie &6{NAME}";
     public static String GUILD$INVITE$SEND$TO$LEADER = "&7Wyslales zaproszenie do gildii do gracza &6{PLAYER}";
     public static String GUILD$INVITE$SEND$TO$USER = "&7Dostales zaproszenia do gildii o tagu &6{TAG}";
     public static String GUILD$INVITE$CANCELED$TO$LEADER = "&7Zaproszenia gracza &6{PLAYER} &7do gildii zostalo anulowane";
     public static String GUILD$INVITE$CANCELED$TO$USER = "&cZaproszenie do gildii o tagu0 &6{TAG} zostalo anulowane";
     public static String GUILD$JOINED = "&7Dolaczyles do gildii o tagu &6{TAG}";
+    public static String GUILD$LEFT = "&cOpusciles gildie o tagu &6{TAG}";
 
     public static List<String> COMMANDLIST = Arrays.asList(
             "&7<&f-&8[&6KAWAIIGUILDS&8]&f-&8>",

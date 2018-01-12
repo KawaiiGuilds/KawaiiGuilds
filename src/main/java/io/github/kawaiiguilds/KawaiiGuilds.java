@@ -1,6 +1,5 @@
 package io.github.kawaiiguilds;
 
-
 import io.github.kawaiiguilds.command.basic.args.*;
 import io.github.kawaiiguilds.command.executorbase.CommandExecutorBase;
 import io.github.kawaiiguilds.listener.*;
@@ -35,7 +34,7 @@ public final class KawaiiGuilds extends JavaPlugin {
         cmdBase.addSubCommand(new CreateArgs(this));
         cmdBase.addSubCommand(new InviteArgs(this));
         cmdBase.addSubCommand(new JoinArgs(this));
-        cmdBase.addSubCommand(new DeleteArgs(this));
+        cmdBase.addSubCommand(new LeaveArgs(this));
         cmdBase.addSubCommand(new InfoArgs(this));
         this.getCommand("kawaiiguilds").setExecutor(cmdBase);
 

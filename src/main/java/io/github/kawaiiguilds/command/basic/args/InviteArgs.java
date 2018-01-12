@@ -45,7 +45,7 @@ public class InviteArgs extends SubCommand {
         }
 
         if(dusty.hasGuild()) {
-            player.sendMessage(StringUtils.replace(Messages.ERROR$PLAYER_HAVE_GUILD, "{PLAYER]", dusty.getName()));
+            player.sendMessage(StringUtils.replace(Messages.ERROR$PLAYER_HAVE_GUILD, "{PLAYER}", dusty.getName()));
             return;
         }
 

@@ -2,23 +2,26 @@ package io.github.kawaiiguilds.command.basic.args;
 
 import io.github.kawaiiguilds.KawaiiGuilds;
 import io.github.kawaiiguilds.Messages;
+import io.github.kawaiiguilds.basic.Guild;
 import io.github.kawaiiguilds.basic.User;
 import io.github.kawaiiguilds.command.executorbase.SubCommand;
 import io.github.kawaiiguilds.util.MessageUtil;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import sun.misc.resources.Messages_fr;
 
-public class DeleteArgs extends SubCommand {
+public class LeaveArgs extends SubCommand {
 
     private final KawaiiGuilds kawaiiGuilds;
 
-    public DeleteArgs(KawaiiGuilds kawaiiGuilds) {
+    public LeaveArgs(KawaiiGuilds kawaiiGuilds) {
         super(
-                "usun",
+                "opusc",
                 false,
-                "kawaiiguilds.command.delete",
-                "&a/g &7usun");
+                "kawaiiguilds.command.leave",
+                "&a/g &7opusc");
         this.kawaiiGuilds = kawaiiGuilds;
     }
 
@@ -36,9 +39,7 @@ public class DeleteArgs extends SubCommand {
             player.sendMessage(Messages.ERROR$DONT_HAVE_GUILD);
             return;
         }
-
+        player.sendMessage(StringUtils.replace(Messages.GUILD$LEFT, "{TAG}", user.getGuild().getTag()));
         user.setGuild(null);
-        MessageUtil.sendMessage(player, "&cNie jestes juz w gildii");
-
     }
 }
