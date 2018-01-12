@@ -23,6 +23,6 @@ public interface Database {
 
     void execute(String query) throws Exception;
 
-    void query(String query, Callback<ResultSet> result) throws Exception;
+    void query(String query, ResultSet result) throws Exception;
 
 }

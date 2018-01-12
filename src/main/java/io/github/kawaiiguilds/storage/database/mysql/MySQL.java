@@ -7,7 +7,6 @@ import io.github.kawaiiguilds.KawaiiGuilds;
 import io.github.kawaiiguilds.basic.Guild;
 import io.github.kawaiiguilds.basic.User;
 import io.github.kawaiiguilds.storage.database.AbstractDatabase;
-import io.github.kawaiiguilds.storage.database.Callback;
 import org.bukkit.Bukkit;
 
 import java.sql.Connection;
